@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+ALL4DATA te-taniguchi 2020/09/09
+INDEX.HTML
+-->
+<html>
+
+<head>
+    <title>all4data</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+    <!-- LUXON -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.3/build/global/luxon.min.js"></script>
+
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script src="main.js" type="module"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto">ALL DATA</div>
+            <div id="fileInfo" class="col-auto"></div>
+        </div>
+        <div class="row">
+            <!-- TABLE表示 -->
+            <div class="col-auto">
+                <button type="button" id="cmd_table" class="btn btn-secondary">TABLE表示</button>
+            </div>
+            <!-- ファイルのダウンロード -->
+            <div class="col-auto">
+                <button type="button" id="cmd_dl" class="btn btn-secondary">download</button>
+            </div>
+
+            <!-- option -->
+            <div class="col-auto">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="1or3_chk" checked="true">
+                    <label class="form-check-label" for="1or3_chk">1,3コードのみ</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="catecode_chk" checked="true">
+                    <label class="form-check-label" for="catecode_chk">分類コード、英字出力しない</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="newfile_chk">
+                    <label class="form-check-label" for="newfile_chk">在庫最新にする</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
