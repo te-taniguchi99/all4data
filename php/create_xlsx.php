@@ -2,14 +2,19 @@
 
 /*
  * ALL4DATA
- * SELECT結果データファイル作成用
+ * SELECT結果データファイル作成用 POST受け
  * http://localhost/all4data/php/create_xlsx.php
+ * リクエスト：POST
+ *  {"newFlg":true or false} true時、中間jsonファイルがあっても新規で作成しなおす
+ *      html上では「在庫最新にする」のチェックボックス
+ *  {"flg13":true or false} true時、1,3コードのみを出力する
+ *  {"catecode"true or false} true時、分類コード及び商品英字を出力しない
  */
 
 set_time_limit(120);
-// header("Content-Type: text/plain; charset=utf-8");
+header("Content-Type: text/plain; charset=utf-8");
 // header('Content-Type: application/force-download'); //ファイルを強制的にDLさせる
-header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+// header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
 
@@ -116,13 +121,13 @@ function FilterData($data, $flg13, $catecode)
 
     //配列LOOOOOOOP
     foreach ($data as $row) {
-        //分類コード、trueは比出力
+        //分類コード及び商品英表記、trueは出力しない
         if ($catecode === "true") {
             //以下を非出力とする
             unset($row['大分類']);
             unset($row['中分類']);
             unset($row['小分類']);
-            unset($wor['シリーズコード']);
+            unset($row['シリーズコード']);
             unset($row['英字名']);
         }
         //13flgがtrue－＞1,3コードのみの時
@@ -135,6 +140,7 @@ function FilterData($data, $flg13, $catecode)
             $resArray[] = $row;
         }
     }
+    // print_r($resArray);
 
     return $resArray;
 }

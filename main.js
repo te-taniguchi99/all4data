@@ -29,7 +29,6 @@ function AddEvent() {
 }
 
 
-
 //初期化処理
 async function GetData() {
 

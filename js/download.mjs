@@ -11,7 +11,7 @@ export function GetFile(options) {
         body: JSON.stringify(options)
     })
         // .then(res => res.text())
-        // .then(res2 => console.log(res2));
+        // .then(res2 => console.log(res2))
 
         .then(res => {
             // console.log(res);
