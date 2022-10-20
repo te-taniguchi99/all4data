@@ -8,14 +8,11 @@
  *  {"newFlg":true or false} true時、中間jsonファイルがあっても新規で作成しなおす
  *      html上では「在庫最新にする」のチェックボックス
  *  {"flg13":true or false} true時、1,3コードのみを出力する
- *  {"catecode"true or false} true時、分類コード及び商品英字を出力しない
+ *  {"catecode":true or false} true時、分類コード及び商品英字を出力しない
  */
 
 set_time_limit(120);
 header("Content-Type: text/plain; charset=utf-8");
-// header('Content-Type: application/force-download'); //ファイルを強制的にDLさせる
-// header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
 
 $outFilePath = '../data/'; //作成したExcelの保存先
@@ -27,6 +24,7 @@ $outFullPath = $outFilePath . $outFileName;
 $arg = json_decode(file_get_contents("php://input"), true);
 
 //falseは何故か空になるので、文字列falseに変換
+$interimOnly = $arg['interimOnly'] === true ? "true" : "false";
 $newFlg = $arg['newFlg'] === true ? "true" : "false";
 $flg13 = $arg['flg13'] === true ? "true" : "false";
 $catecode = $arg['catecode'] === true ? "true" : "false";
@@ -35,7 +33,8 @@ $catecode = $arg['catecode'] === true ? "true" : "false";
  * JSONファイル作成
  * create_base_json.php側でファイルの新旧判定もしている
  */
-require_once 'create_base_json.php';
+$hoge  = require_once 'create_base_json.php';
+$hoge.JsonFileProc($newFlg);
 
 /**
  * Excelファイル作成
