@@ -4,3 +4,9 @@
     text-align: left;
     margin-top: 10px;
 }
+
+/* DataTablesで表示される、アコーディオンの行間を狭くする */
+table.dataTable>tbody>tr.child ul.dtr-details>li{
+    padding: 0;
+}
+

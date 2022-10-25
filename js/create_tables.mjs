@@ -30,7 +30,7 @@ export function SetTh(objData) {
     let keyNameArr = Object.keys(objData[0]);
     // console.log(keyNameArr);
     let $target = $('#mainTable').find('tr');
-    console.log(keyNameArr);
+    // console.log(keyNameArr);
     keyNameArr.map(e => {
         $target.append('<th>' + e + '</th>');
     })

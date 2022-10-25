@@ -31,6 +31,7 @@ function AddEvent() {
 
     //TABLE描画ボタン押下時処理
     $('#cmd_table').on('click', () => {
+        $('#table_spiner').show();
         let opt = {
             'interimOnly': true,
             'newFlg': $('#newfile_chk').prop('checked'),
@@ -44,7 +45,8 @@ function AddEvent() {
             //console.log(objData);
             //不要列の削除　旧仕入予定単価,最新仕入予定単価
             objData = DeleteColItem(objData);
-            WriteTable(objData);
+            await WriteTable(objData);
+            $('#table_spiner').hide();
         })();
 
     })
@@ -67,7 +69,7 @@ function DeleteColItem(data) {
         delete e['英字名'];
         return e;
     })
-    console.log(newData);
+    // console.log(newData);
 
     return newData;
 }

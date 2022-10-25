@@ -3,7 +3,7 @@
 //      flg13： 1or3コードのみか
 
 export async function GetFile(options) {
-    console.log(options);
+    // console.log(options);
 
     //TABLE表示ボタン押下か判断　中間ファイルのみ作成FLG
     //基本的に中間ファイルFLGがTrueはテーブル表示ボタン押下時のみ
